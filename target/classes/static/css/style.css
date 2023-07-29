@@ -1,0 +1,35 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 30 oct. 2018, 20:47:36
+    Author     : fabricemoudjie
+*/
+.table-max {
+  display: block;
+  max-height:300px;
+  overflow-y: auto;
+  -ms-overflow-style: -ms-autohiding-scrollbar;
+}
+#success{
+    display: inline-block;
+}
+.succes{
+    color: green;
+}
+.erreur{
+    color: red;
+}
+.container{
+    padding-top: 50px;
+}
+
+.banniere{
+    background-image: url("/img/imagesmspro.jpeg")
+}
+
+.title{
+    color:#cb3030;
+}

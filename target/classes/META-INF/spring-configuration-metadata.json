@@ -1,0 +1,127 @@
+{
+  "groups": [
+    {
+      "name": "app",
+      "type": "com.sesa.medical.globalconfig.AppProperties",
+      "sourceType": "com.sesa.medical.globalconfig.AppProperties"
+    },
+    {
+      "name": "app.auth",
+      "type": "com.sesa.medical.globalconfig.AppProperties$Auth",
+      "sourceType": "com.sesa.medical.globalconfig.AppProperties",
+      "sourceMethod": "getAuth()"
+    },
+    {
+      "name": "app.oauth2",
+      "type": "com.sesa.medical.globalconfig.AppProperties$OAuth2",
+      "sourceType": "com.sesa.medical.globalconfig.AppProperties",
+      "sourceMethod": "getOauth2()"
+    },
+    {
+      "name": "file",
+      "type": "com.sesa.medical.users.entities.DocumentStorageProperties",
+      "sourceType": "com.sesa.medical.users.entities.DocumentStorageProperties"
+    },
+    {
+      "name": "mail",
+      "type": "com.sesa.medical.users.dto.MailPropertiesDto",
+      "sourceType": "com.sesa.medical.users.dto.MailPropertiesDto"
+    },
+    {
+      "name": "mail.smtp",
+      "type": "com.sesa.medical.users.dto.MailPropertiesDto$SMTP",
+      "sourceType": "com.sesa.medical.users.dto.MailPropertiesDto",
+      "sourceMethod": "getSmtp()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "app.auth.refrest-token-expiration-msec",
+      "type": "java.lang.Long",
+      "sourceType": "com.sesa.medical.globalconfig.AppProperties$Auth",
+      "defaultValue": 0
+    },
+    {
+      "name": "app.auth.token-expiration-msec",
+      "type": "java.lang.Long",
+      "sourceType": "com.sesa.medical.globalconfig.AppProperties$Auth",
+      "defaultValue": 0
+    },
+    {
+      "name": "app.auth.token-secret",
+      "type": "java.lang.String",
+      "sourceType": "com.sesa.medical.globalconfig.AppProperties$Auth"
+    },
+    {
+      "name": "app.oauth2.authorized-redirect-uris",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.sesa.medical.globalconfig.AppProperties$OAuth2"
+    },
+    {
+      "name": "file.document-format",
+      "type": "java.lang.String",
+      "sourceType": "com.sesa.medical.users.entities.DocumentStorageProperties"
+    },
+    {
+      "name": "file.document-type",
+      "type": "java.lang.String",
+      "sourceType": "com.sesa.medical.users.entities.DocumentStorageProperties"
+    },
+    {
+      "name": "file.file-name",
+      "type": "java.lang.String",
+      "sourceType": "com.sesa.medical.users.entities.DocumentStorageProperties"
+    },
+    {
+      "name": "file.upload-dir",
+      "type": "java.lang.String",
+      "sourceType": "com.sesa.medical.users.entities.DocumentStorageProperties"
+    },
+    {
+      "name": "file.user",
+      "type": "com.sesa.medical.users.entities.Users",
+      "sourceType": "com.sesa.medical.users.entities.DocumentStorageProperties"
+    },
+    {
+      "name": "mail.forgotpassword",
+      "type": "java.lang.String",
+      "sourceType": "com.sesa.medical.users.dto.MailPropertiesDto"
+    },
+    {
+      "name": "mail.from",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.sesa.medical.users.dto.MailPropertiesDto"
+    },
+    {
+      "name": "mail.from-name",
+      "type": "java.lang.String",
+      "sourceType": "com.sesa.medical.users.dto.MailPropertiesDto"
+    },
+    {
+      "name": "mail.smtp.host",
+      "type": "java.lang.String",
+      "sourceType": "com.sesa.medical.users.dto.MailPropertiesDto$SMTP"
+    },
+    {
+      "name": "mail.smtp.password",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.sesa.medical.users.dto.MailPropertiesDto$SMTP"
+    },
+    {
+      "name": "mail.smtp.port",
+      "type": "java.lang.String",
+      "sourceType": "com.sesa.medical.users.dto.MailPropertiesDto$SMTP"
+    },
+    {
+      "name": "mail.smtp.username",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.sesa.medical.users.dto.MailPropertiesDto$SMTP"
+    },
+    {
+      "name": "mail.verificationapi",
+      "type": "java.lang.String",
+      "sourceType": "com.sesa.medical.users.dto.MailPropertiesDto"
+    }
+  ],
+  "hints": []
+}

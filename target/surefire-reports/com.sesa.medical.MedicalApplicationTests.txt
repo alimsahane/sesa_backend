@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: com.sesa.medical.MedicalApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 45.416 s <<< FAILURE! - in com.sesa.medical.MedicalApplicationTests
+contextLoads  Time elapsed: 0.028 s  <<< ERROR!
+java.lang.IllegalStateException: Failed to load ApplicationContext
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userRestController': Unsatisfied dependency expressed through field 'documentStorageService'; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'documentStorageServiceImpl' defined in file [/Users/wilfriedkouassi/Desktop/SeSa-backend-sos_push/target/classes/com/sesa/medical/users/services/imp/DocumentStorageServiceImpl.class]: Bean instantiation via constructor failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.sesa.medical.users.services.imp.DocumentStorageServiceImpl]: Constructor threw exception; nested exception is com.sesa.medical.users.exception.DocumentsStorageException: Could not create the directory where the uploaded files will be stored.
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'documentStorageServiceImpl' defined in file [/Users/wilfriedkouassi/Desktop/SeSa-backend-sos_push/target/classes/com/sesa/medical/users/services/imp/DocumentStorageServiceImpl.class]: Bean instantiation via constructor failed; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.sesa.medical.users.services.imp.DocumentStorageServiceImpl]: Constructor threw exception; nested exception is com.sesa.medical.users.exception.DocumentsStorageException: Could not create the directory where the uploaded files will be stored.
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [com.sesa.medical.users.services.imp.DocumentStorageServiceImpl]: Constructor threw exception; nested exception is com.sesa.medical.users.exception.DocumentsStorageException: Could not create the directory where the uploaded files will be stored.
+Caused by: com.sesa.medical.users.exception.DocumentsStorageException: Could not create the directory where the uploaded files will be stored.
+Caused by: java.nio.file.FileSystemException: /home/medias: Operation not supported
+
