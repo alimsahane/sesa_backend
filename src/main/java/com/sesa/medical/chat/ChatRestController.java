@@ -1,3 +1,4 @@
+/*
 package com.sesa.medical.chat;
 
 import com.pusher.rest.Pusher;
@@ -307,3 +308,4 @@ public class ChatRestController {
         }
     }
 }
+*/

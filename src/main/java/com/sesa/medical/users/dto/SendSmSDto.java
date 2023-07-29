@@ -8,13 +8,13 @@ import lombok.Setter;
 @Setter
 public class SendSmSDto {
 
-    private String sender_name;
+    private String senderid;
 
-    private String phone_str;
+    private String mobiles;
 
-    private String message;
+    private String sms;
 
-    private String user_id;
+    private String user;
 
     private String password;
 }

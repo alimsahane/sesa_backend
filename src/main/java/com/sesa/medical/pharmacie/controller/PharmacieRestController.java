@@ -1,12 +1,14 @@
 package com.sesa.medical.pharmacie.controller;
 
+import com.sesa.medical.packsesa.entities.PackSesa;
 import com.sesa.medical.pharmacie.dto.Addmedoc;
 import com.sesa.medical.pharmacie.entities.Medicaments;
+import com.sesa.medical.pharmacie.entities.PrestationDetailsCategories;
 import com.sesa.medical.pharmacie.service.IMedicamentService;
 import com.sesa.medical.users.dto.UploadFileResponseDto;
 import com.sesa.medical.users.entities.Users;
 import com.sesa.medical.utilities.entities.SliderDocument;
-import com.sesa.medical.utilities.service.SliderDocumentService;
+//import com.sesa.medical.utilities.service.SliderDocumentService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -42,12 +44,11 @@ public class PharmacieRestController {
 
     @Autowired
     IMedicamentService medicamentService;
+    /*@Autowired
+    SliderDocumentService sliderDocumentService;*/
 
-    @Autowired
-    SliderDocumentService sliderDocumentService;
 
-
-    @Operation(summary = "creation d'un médicament pour une pharmacie", tags = "Medicaments", responses = {
+    /*@Operation(summary = "creation d'un médicament pour une pharmacie", tags = "Medicaments", responses = {
             @ApiResponse(responseCode = "200", content = @Content(mediaType = "Application/Json", array = @ArraySchema(schema = @Schema(implementation = UploadFileResponseDto.class)))),
             @ApiResponse(responseCode = "500", description = "Sorry! Filename contains invalid path sequence / Could not store file", content = @Content(mediaType = "Application/Json"))})
     @PostMapping("")
@@ -63,7 +64,7 @@ public class PharmacieRestController {
         medicamentService.addmedicament(medicaments);
         return new UploadFileResponseDto(fileName, fileDownloadUri, file.getContentType(), file.getSize());
 
-    }
+    }*/
 
     public static String removeExtension(String fileName) {
         if (fileName.indexOf(".") > 0) {
@@ -74,7 +75,7 @@ public class PharmacieRestController {
 
     }
 
-    @Operation(summary = "récuperer l'image d'un médicament", tags = "Medicaments", responses = {
+    /*@Operation(summary = "récuperer l'image d'un médicament", tags = "Medicaments", responses = {
             @ApiResponse(responseCode = "200", content = @Content(mediaType = "Application/Json")),
             @ApiResponse(responseCode = "404", description = "File not found", content = @Content(mediaType = "Application/Json")), })
     @GetMapping(value = "/downloadFile/{filename}")
@@ -106,7 +107,7 @@ public class PharmacieRestController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("File not found");
         }
-    }
+    }*/
 
     @Operation(summary = "Supprimer un médicament", tags = "Medicaments", responses = {
             @ApiResponse(responseCode = "200", content = @Content(mediaType = "Application/Json")),
@@ -124,6 +125,36 @@ public class PharmacieRestController {
     @RequestMapping(method=RequestMethod.GET,value="",produces = "application/json;charset=UTF-8")
     public ResponseEntity<?> getAllMedoc() {
         return new ResponseEntity<>(medicamentService.getAllMedoc(), HttpStatus.OK);
+    }
+
+
+    @Operation(summary = "Liste des prestation categories disponible", tags = "Prestation Categories", responses = {
+            @ApiResponse(responseCode = "200", description = "Succès de l'opération", content = @Content(mediaType = "Application/Json",array = @ArraySchema(schema = @Schema(implementation = Medicaments.class)))),
+            @ApiResponse(responseCode = "403", description = "vous n'avez pas les autorisations néccessaire pour accéder à cette resource", content = @Content(mediaType = "Application/Json"))})
+    //@GetMapping("")
+    @RequestMapping(method=RequestMethod.GET,value="/prestationCategorie",produces = "application/json;charset=UTF-8")
+    public ResponseEntity<?> getAllPrestationCategorie() {
+        return new ResponseEntity<>(medicamentService.getAllPrestationCategorie(), HttpStatus.OK);
+    }
+
+    @Operation(summary = "Liste des details en fonction de la catégorie", tags = "Details Categorie", responses = {
+            @ApiResponse(responseCode = "200", content = @Content(mediaType = "Application/Json", array = @ArraySchema(schema = @Schema(implementation = PrestationDetailsCategories.class)))),
+            @ApiResponse(responseCode = "401", description = "Full authentication is required to access this resource", content = @Content(mediaType = "Application/Json")),
+            @ApiResponse(responseCode = "403", description = "Forbidden : accès refusé", content = @Content(mediaType = "Application/Json")),})
+    @RequestMapping(method=RequestMethod.GET,value="/prestationCategorie/{id}",produces = "application/json;charset=UTF-8")
+    //@GetMapping("/{id}")
+    public ResponseEntity<?>  getDetailsPrestationCategories(@PathVariable Long id) {
+        List<PrestationDetailsCategories> list = medicamentService.getAllPrestationByCategorie(id);
+        return ResponseEntity.ok(list);
+    }
+
+    @Operation(summary = "Liste des prestation categories details disponible", tags = "Prestation Categories", responses = {
+            @ApiResponse(responseCode = "200", description = "Succès de l'opération", content = @Content(mediaType = "Application/Json",array = @ArraySchema(schema = @Schema(implementation = Medicaments.class)))),
+            @ApiResponse(responseCode = "403", description = "vous n'avez pas les autorisations néccessaire pour accéder à cette resource", content = @Content(mediaType = "Application/Json"))})
+    //@GetMapping("")
+    @RequestMapping(method=RequestMethod.GET,value="/prestationDetailsCategories",produces = "application/json;charset=UTF-8")
+    public ResponseEntity<?> getAllPrestationDetailsCategories() {
+        return new ResponseEntity<>(medicamentService.getAllPrestationDetailsCategories(), HttpStatus.OK);
     }
 
     @Operation(summary = "Modifier le status d'un médicaments", tags = "Medicaments", responses = {

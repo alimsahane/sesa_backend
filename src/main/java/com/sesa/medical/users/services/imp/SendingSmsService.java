@@ -126,10 +126,10 @@ public class SendingSmsService {
                 .writeTimeout(5, TimeUnit.MINUTES) // write timeout
                 .readTimeout(5, TimeUnit.MINUTES); // read timeout
         SendSmSDto demo = new SendSmSDto();
-        demo.setSender_name(senderName);
-        demo.setPhone_str(receiverNumber);
-        demo.setMessage(message);
-        demo.setUser_id(app_mboadeals_userId);
+        demo.setSenderid(senderName);
+        demo.setMobiles(receiverNumber);
+        demo.setSms(message);
+        demo.setUser(app_mboadeals_userId);
         demo.setPassword(app_mboadeals_password);
         JSONObject messages = new JSONObject(demo);
         log.info("chaine json du message: "+ messages.toString());
@@ -139,7 +139,7 @@ public class SendingSmsService {
         MediaType mediaType = MediaType.parse("application/json; charset=utf-8");
         okhttp3.RequestBody body = okhttp3.RequestBody.create(mediaType, messages.toString());
         Request request = new Request.Builder()
-                .url("https://mboadeals.net/api/v1/sms/sendsms")
+                .url("https://smsvas.com/bulk/public/index.php/api/v1/sendsms")
                 .post(body)
                 .addHeader("Content-Type", "application/json; charset=utf-8")
                 .build();

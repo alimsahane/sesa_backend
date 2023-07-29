@@ -3,10 +3,7 @@ package com.sesa.medical.patient.entities;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 
@@ -15,6 +12,8 @@ import java.util.Date;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
+@Table(name = "mode_pay")
 public class ModePay {
 
     @Schema(description = "identifiant unique du mode de payement", example = "1", required = true, accessMode = Schema.AccessMode.READ_ONLY)

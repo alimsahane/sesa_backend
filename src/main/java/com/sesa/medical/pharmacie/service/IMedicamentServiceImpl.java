@@ -1,7 +1,11 @@
 package com.sesa.medical.pharmacie.service;
 
 import com.sesa.medical.pharmacie.entities.Medicaments;
+import com.sesa.medical.pharmacie.entities.PrestationCategorie;
+import com.sesa.medical.pharmacie.entities.PrestationDetailsCategories;
 import com.sesa.medical.pharmacie.repository.IMedicamentRepo;
+import com.sesa.medical.pharmacie.repository.IPrestationCategorieRepo;
+import com.sesa.medical.pharmacie.repository.IPrestationDetailsCategories;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
@@ -14,6 +18,12 @@ import java.util.List;
 public class IMedicamentServiceImpl implements IMedicamentService {
     @Autowired
     IMedicamentRepo medicamentRepo;
+
+    @Autowired
+    IPrestationCategorieRepo prestationCategorieRepo;
+
+    @Autowired
+    IPrestationDetailsCategories prestationDetailsCategories;
 
     @Override
     public Medicaments getById(Long id) {
@@ -45,6 +55,24 @@ public class IMedicamentServiceImpl implements IMedicamentService {
     public List<Medicaments> getAllMedoc() {
         return medicamentRepo.findAll();
     }
+
+    @Override
+    public List<PrestationCategorie> getAllPrestationCategorie() {
+        return prestationCategorieRepo.findAll();
+    }
+
+    @Override
+    public List<PrestationDetailsCategories> getAllPrestationDetailsCategories() {
+        return prestationDetailsCategories.findAll();
+    }
+
+    @Override
+    public List<PrestationDetailsCategories> getAllPrestationByCategorie(Long categorieId) {
+        PrestationCategorie prestationCategorie = prestationCategorieRepo.findById(categorieId).orElseThrow(() -> new ResourceNotFoundException("Categorie where id: " + categorieId + " not found"));
+        return prestationDetailsCategories.findByPrestationCategorieOrderByPriceAsc(prestationCategorie);
+
+    }
+
 
     @Override
     public void deleteMedoc(Long id) {

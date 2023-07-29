@@ -1,3 +1,4 @@
+/*
 package com.sesa.medical.utilities.service;
 
 import com.sesa.medical.users.entities.DocumentStorageProperties;
@@ -44,12 +45,10 @@ public class SliderDocumentService {
 
 
     public String storeFile(MultipartFile file, String docType) {
-        // Normalize file name
         String originalFilename = StringUtils.cleanPath(file.getOriginalFilename());
         String fileName = "";
 
         try {
-            // Check if the file's name contains invalid characters
             if(originalFilename.contains("..")) {
                 throw new DocumentsStorageException("Sorry! Filename contains invalid path sequence " + originalFilename);
             }
@@ -60,7 +59,6 @@ public class SliderDocumentService {
                 fileExtension = "";
             }
             fileName =  docType + fileExtension;
-            // Copy file to the target location (Replacing existing file with the same name)
             Path targetLocation = this.fileStorageLocation.resolve(fileName);
             Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
             return fileName;
@@ -93,3 +91,4 @@ public class SliderDocumentService {
 
 
 }
+*/

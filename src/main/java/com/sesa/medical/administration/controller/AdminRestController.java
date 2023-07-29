@@ -11,7 +11,7 @@ import com.sesa.medical.security.dto.MessageResponseDto;
 import com.sesa.medical.users.entities.Adresses;
 import com.sesa.medical.users.entities.Users;
 import com.sesa.medical.users.repository.IUsersRepository;
-import com.sesa.medical.users.services.IDocumentStorageService;
+/*import com.sesa.medical.users.services.IDocumentStorageService;*/
 import com.sesa.medical.users.services.IUserService;
 import com.sesa.medical.utilities.service.UtilitieService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -58,8 +58,8 @@ public class AdminRestController {
     @Autowired
     ModelMapper modelMapper;
 
-    @Autowired
-    IDocumentStorageService documentStorageService;
+    /*@Autowired
+    IDocumentStorageService documentStorageService;*/
 
     @Autowired
     IUsersRepository usersRepository;

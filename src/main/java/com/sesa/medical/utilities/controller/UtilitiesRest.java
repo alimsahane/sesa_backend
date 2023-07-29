@@ -16,7 +16,7 @@ import com.sesa.medical.utilities.entities.GeneralCondition;
 import com.sesa.medical.utilities.entities.PrivacyPolicy;
 import com.sesa.medical.utilities.entities.SliderDocument;
 import com.sesa.medical.utilities.entities.YoutubeVideo;
-import com.sesa.medical.utilities.service.SliderDocumentService;
+/*import com.sesa.medical.utilities.service.SliderDocumentService;*/
 import com.sesa.medical.utilities.service.UtilitieService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -61,8 +61,8 @@ public class UtilitiesRest {
     @Autowired
     IModeRepo modeRepo;
 
-    @Autowired
-    SliderDocumentService sliderDocumentService;
+   /* @Autowired
+    SliderDocumentService sliderDocumentService;*/
 
     @Autowired
     PrestationService prestationService;
@@ -125,7 +125,7 @@ public class UtilitiesRest {
         return ResponseEntity.ok().body(y);
     }
 
-
+/*
     @Operation(summary = "Uploader une image pour le slider de sesa ", tags = "Utilities", responses = {
             @ApiResponse(responseCode = "200", content = @Content(mediaType = "Application/Json", array = @ArraySchema(schema = @Schema(implementation = UploadFileResponseDto.class)))),
             @ApiResponse(responseCode = "500", description = "Sorry! Filename contains invalid path sequence / Could not store file", content = @Content(mediaType = "Application/Json"))})
@@ -141,7 +141,7 @@ public class UtilitiesRest {
         utilitieService.createSlider(newDoc);
         return new UploadFileResponseDto(fileName, fileDownloadUri, file.getContentType(), file.getSize());
 
-    }
+    }*/
 
     @Operation(summary = "modification d'un lien de video youtube", tags = "Utilities", responses = {
             @ApiResponse(responseCode = "200", content = @Content(mediaType = "Application/Json")),
@@ -175,6 +175,7 @@ public class UtilitiesRest {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
     }
 
+/*
 
     @Operation(summary = "Télécharger un document", tags = "users", responses = {
             @ApiResponse(responseCode = "200", content = @Content(mediaType = "Application/Json")),
@@ -210,6 +211,7 @@ public class UtilitiesRest {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("File not found");
         }
     }
+*/
 
     @Operation(summary = "enregistrer une description pour une prestation", tags = "Utilities", responses = {
             @ApiResponse(responseCode = "200", content = @Content(mediaType = "Application/Json", array = @ArraySchema(schema = @Schema(implementation = UploadFileResponseDto.class)))),})
